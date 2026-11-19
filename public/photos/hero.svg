@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1500" role="img" aria-label="Hero photograph placeholder">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1518"/><stop offset=".55" stop-color="#49605f"/><stop offset="1" stop-color="#b89b70"/></linearGradient></defs>
+  <rect width="2400" height="1500" fill="url(#g)"/><path d="M0 1060 520 650l410 280 390-520 1080 670v420H0Z" fill="#121714" opacity=".77"/><path d="M0 1210 730 820l510 300 410-260 750 360v280H0Z" fill="#090b09" opacity=".72"/><circle cx="1830" cy="1040" r="19" fill="#d8ff65"/><text x="80" y="1420" fill="#f1efe8" opacity=".7" font-family="Arial,sans-serif" font-size="32" letter-spacing="8">REPLACE WITH YOUR HERO PHOTOGRAPH</text>
+</svg>

@@ -1,0 +1,142 @@
+<a class="skip-link" href="#work">Skip to selected work</a>
+
+<header class="site-header" [class.menu-open]="menuOpen">
+  <a class="brand" href="#top" (click)="closeMenu()" aria-label="Between Light home">
+    <span>BETWEEN</span><span>LIGHT</span>
+  </a>
+  <button class="menu-button" type="button" (click)="menuOpen = !menuOpen" [attr.aria-expanded]="menuOpen" aria-label="Toggle menu">
+    {{ menuOpen ? 'Close' : 'Menu' }}
+  </button>
+  <nav aria-label="Primary navigation">
+    <a href="#work" (click)="closeMenu()">Work</a>
+    <a href="#about" (click)="closeMenu()">About</a>
+    <a href="#prints" (click)="closeMenu()">Prints</a>
+    <a href="#contact" (click)="closeMenu()">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <img src="photos/hero.svg" alt="Placeholder for your hero photograph">
+    <div class="hero-shade"></div>
+    <p class="eyebrow">Personal photography journal · 2024—2026</p>
+    <div class="hero-copy">
+      <h1 id="hero-title">Stories found<br>between light<br>and shadow.</h1>
+      <a href="#work" class="text-link">Explore selected work</a>
+    </div>
+    <p class="hero-note">Places / People / Passing moments</p>
+  </section>
+
+  <section class="intro section-pad" aria-label="Introduction">
+    <p class="section-label">The practice</p>
+    <p class="intro-statement">I photograph the quiet evidence of a life being lived—weather moving over a place, a gesture held for half a second, the geometry of an ordinary street.</p>
+  </section>
+
+  <section class="work section-pad" id="work" aria-labelledby="work-title">
+    <div class="section-heading">
+      <div>
+        <p class="section-label">Portfolio</p>
+        <h2 id="work-title">Selected work</h2>
+      </div>
+      <div class="filters" role="group" aria-label="Filter photographs">
+        <button *ngFor="let category of categories" type="button" (click)="setCategory(category)" [class.active]="activeCategory === category" [attr.aria-pressed]="activeCategory === category">
+          {{ category }}
+        </button>
+      </div>
+    </div>
+
+    <div class="gallery" aria-live="polite">
+      <article *ngFor="let photo of filteredPhotographs; let i = index" class="photo-card" [class.portrait]="photo.ratio === 'portrait'">
+        <button type="button" (click)="openPhoto(i)" [attr.aria-label]="'Open ' + photo.title">
+          <span class="image-wrap"><img [src]="photo.src" [alt]="photo.alt" loading="lazy"></span>
+          <span class="photo-meta">
+            <span>{{ photo.title }}</span>
+            <span>{{ photo.place }} · {{ photo.year }}</span>
+          </span>
+        </button>
+      </article>
+    </div>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="about-image">
+      <img src="photos/about.svg" alt="Placeholder for a photograph of the photographer at work" loading="lazy">
+    </div>
+    <div class="about-copy">
+      <p class="section-label">Behind the camera</p>
+      <h2 id="about-title">Technology by trade.<br>Photography by instinct.</h2>
+      <p>Most days, I work in technology—thinking in systems, structure and precise solutions. Photography is where I let observation lead instead. The two practices meet in curiosity: looking closely, understanding how things connect, and finding the simplest frame that still holds the whole story.</p>
+      <p>This is an evolving journal of personal work, slow travel and commissioned stories. Every image is made with attention to natural light and honest moments.</p>
+      <a href="#contact" class="outline-button">Work with me</a>
+    </div>
+  </section>
+
+  <section class="prints section-pad" id="prints" aria-labelledby="prints-title">
+    <div class="section-heading print-heading">
+      <div>
+        <p class="section-label">Collect the work</p>
+        <h2 id="prints-title">Prints & licensing</h2>
+      </div>
+      <p>A future home for limited fine-art prints and image licensing. The portfolio is structured so commerce can be added cleanly when the time is right.</p>
+    </div>
+    <div class="print-options">
+      <article>
+        <p class="option-number">01</p>
+        <h3>Fine-art prints</h3>
+        <p>Archival paper, considered sizes and signed limited editions shipped with care.</p>
+        <a href="#contact">Ask about a photograph</a>
+      </article>
+      <article>
+        <p class="option-number">02</p>
+        <h3>Editorial licensing</h3>
+        <p>Selected photographs available for thoughtful editorial and commercial use.</p>
+        <a href="#contact">Request licensing</a>
+      </article>
+      <article>
+        <p class="option-number">03</p>
+        <h3>Commissioned stories</h3>
+        <p>Portraits, travel narratives and visual stories shaped around your brief.</p>
+        <a href="#contact">Start a conversation</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact section-pad" id="contact" aria-labelledby="contact-title">
+    <div class="contact-intro">
+      <p class="section-label">Get in touch</p>
+      <h2 id="contact-title">Have a story<br>in mind?</h2>
+      <p>For commissions, collaborations, print questions or licensing enquiries.</p>
+      <a href="mailto:hello@yourdomain.com">hello&#64;yourdomain.com</a>
+    </div>
+    <form (submit)="submitInquiry($event)" aria-label="Photography inquiry form">
+      <label>Name<input name="name" type="text" autocomplete="name" required placeholder="Your name"></label>
+      <label>Email<input name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+      <label>I'm interested in
+        <select name="interest" required>
+          <option value="" disabled selected>Choose one</option>
+          <option>Commission</option><option>Print</option><option>Licensing</option><option>Collaboration</option>
+        </select>
+      </label>
+      <label>Message<textarea name="message" rows="4" required placeholder="Tell me a little about your idea"></textarea></label>
+      <button type="submit" class="submit-button">Send inquiry</button>
+      <p class="form-note">Demo form for now — connect it to your preferred email or form service before launch.</p>
+      <p class="success-message" *ngIf="formSent" role="status">Thanks — the form interaction works. Connect a form service to receive real messages.</p>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <a class="brand" href="#top"><span>BETWEEN</span><span>LIGHT</span></a>
+  <p>Photography portfolio · Built for the long view.</p>
+  <p>© 2026 · Instagram</p>
+</footer>
+
+<div class="lightbox" *ngIf="activePhoto as photo" role="dialog" aria-modal="true" [attr.aria-label]="photo.title">
+  <button class="lightbox-close" type="button" (click)="closePhoto()" aria-label="Close image">Close</button>
+  <button class="lightbox-nav prev" type="button" (click)="stepPhoto(-1)" aria-label="Previous image">Previous</button>
+  <figure>
+    <img [src]="photo.src" [alt]="photo.alt">
+    <figcaption><span>{{ photo.title }}</span><span>{{ photo.place }} · {{ photo.year }}</span></figcaption>
+  </figure>
+  <button class="lightbox-nav next" type="button" (click)="stepPhoto(1)" aria-label="Next image">Next</button>
+</div>
