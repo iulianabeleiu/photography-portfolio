@@ -12,7 +12,7 @@
   padding: 1.5rem clamp(1.25rem, 3vw, 3rem);
   color: #fff;
 }
-.brand { display: inline-flex; flex-direction: column; width: fit-content; font-weight: 760; font-size: 0.9rem; line-height: 0.82; letter-spacing: -0.05em; text-decoration: none; }
+.brand { display: inline-flex; flex-direction: column; width: fit-content; font-weight: 720; font-size: 0.84rem; line-height: 0.9; letter-spacing: -0.025em; text-decoration: none; }
 .site-header nav { display: flex; gap: 2.4rem; }
 .site-header nav a { position: relative; font-size: 0.9rem; text-decoration: none; }
 .site-header nav a::after { content: ''; position: absolute; right: 0; bottom: -0.4rem; left: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .3s; }
@@ -24,7 +24,7 @@
 .hero-shade { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(7,9,7,.76) 0%, rgba(7,9,7,.2) 58%, rgba(7,9,7,.36) 100%), linear-gradient(0deg, rgba(7,9,7,.72), transparent 45%); }
 .eyebrow { position: absolute; top: 8.2rem; left: clamp(1.25rem, 3vw, 3rem); margin: 0; font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
 .hero-copy { width: 100%; padding: 0 clamp(1.25rem, 3vw, 3rem) clamp(4rem, 8vw, 7.5rem); }
-.hero h1 { max-width: 920px; margin: 0 0 2.2rem; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(4rem, 10vw, 9rem); font-weight: 400; line-height: .79; letter-spacing: -.075em; }
+.hero h1 { max-width: 920px; margin: 0 0 2.2rem; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(5rem, 13vw, 12rem); font-weight: 400; line-height: .72; letter-spacing: -.075em; }
 .text-link { display: inline-flex; align-items: center; min-height: 44px; border-bottom: 1px solid currentColor; font-size: .92rem; text-decoration: none; }
 .hero-note { position: absolute; right: clamp(1.25rem, 3vw, 3rem); bottom: 2rem; margin: 0; color: rgba(255,255,255,.72); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; writing-mode: vertical-rl; }
 @keyframes hero-in { from { transform: scale(1.08); filter: brightness(.4); } to { transform: scale(1); filter: brightness(1); } }
@@ -74,6 +74,11 @@
 .print-options article > p:not(.option-number) { max-width: 320px; min-height: 78px; color: #59675d; line-height: 1.5; }
 .print-options a { display: inline-block; margin-top: 2rem; border-bottom: 1px solid; font-size: .9rem; text-decoration: none; }
 
+.shop-note { display: grid; grid-template-columns: .65fr 1.55fr .8fr; gap: 3rem; align-items: start; border-bottom: 1px solid var(--line); }
+.shop-note h2 { margin: 0; max-width: 900px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2.8rem, 5.8vw, 6rem); font-weight: 400; line-height: .96; letter-spacing: -.05em; }
+.shop-note > div { padding-top: .35rem; }
+.shop-note > div p { margin: 0 0 2rem; color: var(--muted); line-height: 1.65; }
+
 .contact { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(4rem, 10vw, 12rem); }
 .contact-intro > p:not(.section-label) { max-width: 460px; margin-top: 3rem; color: var(--muted); font-size: 1rem; line-height: 1.6; }
 .contact-intro > a { display: inline-block; margin-top: 1rem; font-size: 1.05rem; }
@@ -122,6 +127,7 @@ footer p:last-child { text-align: right; }
   .print-options { grid-template-columns: 1fr; }
   .print-options article, .print-options article + article { min-height: auto; padding: 2rem 0; border-right: 0; border-bottom: 1px solid rgba(37,50,44,.3); }
   .option-number { margin-bottom: 3rem; }
+  .shop-note { grid-template-columns: 1fr; }
   .contact { grid-template-columns: 1fr; }
   footer { grid-template-columns: 1fr; gap: 1.2rem; }
   footer p:last-child { text-align: left; }

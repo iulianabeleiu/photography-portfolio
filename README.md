@@ -1,4 +1,4 @@
-# Between Light — photography portfolio
+# Iuliana-Maria Burz — photography portfolio
 
 A responsive, dependency-free portfolio prepared for OpenAI Sites. The source is split into template, style and behavior modules so it remains straightforward to move into Angular components later. It includes:
 

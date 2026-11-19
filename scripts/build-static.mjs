@@ -27,7 +27,7 @@ template = template
 const globalCss = readFileSync(resolve(root, 'src/styles.css'), 'utf8');
 const componentCss = readFileSync(resolve(root, 'src/app/app.component.css'), 'utf8');
 const body = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><title>Between Light — Photography</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A personal photography journal exploring people, place and the quiet moments between."><meta name="theme-color" content="#111210"><link rel="stylesheet" href="styles.css"></head><body>${template}<script src="app.js" defer></script></body></html>`;
+<html lang="en"><head><meta charset="utf-8"><title>Iuliana-Maria Burz — Photography</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="The photography portfolio and personal projects of Iuliana-Maria Burz."><meta name="theme-color" content="#fbfaf5"><link rel="stylesheet" href="styles.css"></head><body>${template}<script src="app.js" defer></script></body></html>`;
 
 writeFileSync(resolve(dist, 'index.html'), body);
 writeFileSync(resolve(dist, 'styles.css'), `${globalCss}\n${componentCss}\n[hidden]{display:none!important}`);
