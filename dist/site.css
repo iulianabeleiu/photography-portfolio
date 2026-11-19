@@ -46,6 +46,21 @@ a { color: inherit; } button { color: inherit; }
 .section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: clamp(3rem, 6vw, 6rem); }
 .section-intro p { max-width: 620px; margin: 0; color: var(--grey); line-height: 1.75; }
 
+.home-gallery { display: grid; grid-template-columns: 1.2fr .8fr 1fr; gap: clamp(1rem, 2vw, 2rem); align-items: end; }
+.home-photo { position: relative; display: block; overflow: hidden; color: var(--white); background: var(--blue-950); text-decoration: none; }
+.home-photo:nth-child(2) { margin-bottom: 5rem; }
+.home-photo img { width: 100%; aspect-ratio: .82; object-fit: cover; transition: transform .7s ease, filter .35s ease; }
+.home-photo:nth-child(2) img { aspect-ratio: .76; }
+.home-photo:nth-child(3) img { aspect-ratio: 1; }
+.home-photo span { position: absolute; right: 0; bottom: 0; left: 0; padding: 3rem 1.2rem 1.2rem; background: linear-gradient(0deg, rgba(7,26,42,.82), transparent); opacity: 0; transition: opacity .3s ease; }
+.home-photo:hover img, .home-photo:focus-visible img { transform: scale(1.025); filter: saturate(.75); }
+.home-photo:hover span, .home-photo:focus-visible span { opacity: 1; }
+.home-gallery__link { margin: 2rem 0 0; text-align: right; }
+.home-about { display: grid; grid-template-columns: .6fr 1.5fr .6fr; gap: 3rem; align-items: start; padding: clamp(5rem, 10vw, 10rem) clamp(1.25rem, 6vw, 7rem); color: var(--white); background: var(--blue-950); }
+.home-about > p:nth-child(2) { margin: 0; font: 400 clamp(2.3rem, 4.3vw, 4.8rem)/1.02 var(--serif); letter-spacing: -.045em; }
+.home-about .eyebrow { color: var(--blue-200); }
+.home-about a { justify-self: end; }
+
 .series-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2vw, 2rem); }
 .series-card { position: relative; min-height: 560px; overflow: hidden; color: var(--white); background: var(--blue-950); }
 .series-card > img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.8,.2,1), filter .5s ease; }
@@ -81,6 +96,8 @@ a { color: inherit; } button { color: inherit; }
 .thumbnail img { width: 100%; aspect-ratio: 1.45; object-fit: cover; }
 .thumbnail:hover, .thumbnail.is-active { border-color: var(--blue-500); opacity: 1; }
 .photo-index { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2vw, 2rem); }
+.photo-index--portfolio { grid-template-columns: repeat(3, 1fr); row-gap: clamp(3rem, 6vw, 7rem); }
+.photo-index--portfolio article:nth-child(2), .photo-index--portfolio article:nth-child(5) { margin-top: 5rem; }
 .photo-index__button { width: 100%; padding: 0; border: 0; background: transparent; text-align: left; cursor: zoom-in; }
 .photo-index img { width: 100%; aspect-ratio: 1.28; object-fit: cover; background: var(--mist); transition: filter .3s, transform .5s; }
 .photo-index__button:hover img, .photo-index__button:focus-visible img { transform: translateY(-4px); filter: saturate(.7); }
@@ -141,10 +158,15 @@ body.lightbox-open { overflow: hidden; }
   .nav-right { margin-top: 1.5rem; }
   .site-nav a { font-size: 1rem; }
   .home-hero__copy, .section-intro, .collection-header, .about-layout, .contact-layout { grid-template-columns: 1fr; }
+  .home-gallery { grid-template-columns: 1fr 1fr; }
+  .home-photo:nth-child(2) { margin-bottom: 0; }
+  .home-about { grid-template-columns: 1fr; }
+  .home-about a { justify-self: start; }
   .series-grid { grid-template-columns: 1fr; }
   .series-card { min-height: 72vh; }
   .about-image { min-height: 70vh; order: -1; }
   .photo-index { grid-template-columns: repeat(2, 1fr); }
+  .photo-index--portfolio article:nth-child(2), .photo-index--portfolio article:nth-child(5) { margin-top: 0; }
   .site-footer { grid-template-columns: 1fr; } .site-footer p:last-child { text-align: left; }
 }
 @media (max-width: 600px) {
@@ -158,6 +180,7 @@ body.lightbox-open { overflow: hidden; }
   .carousel__counter { display: none; }
   .thumbnail-strip { grid-template-columns: repeat(2, 1fr); }
   .photo-index { grid-template-columns: 1fr; }
+  .home-gallery { grid-template-columns: 1fr; }
   .contact-layout { padding-top: 5rem; }
   .lightbox { padding: .75rem; }
   .lightbox__stage { grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr) auto; gap: .4rem; }
