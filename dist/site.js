@@ -8,6 +8,50 @@ if (menuButton && navigation) {
   });
 }
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealSections = [...document.querySelectorAll('[data-reveal]')];
+
+if (!prefersReducedMotion) {
+  document.documentElement.classList.add('has-motion');
+
+  if (revealSections.length) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+    revealSections.forEach((section) => revealObserver.observe(section));
+  }
+
+  const hero = document.querySelector('.home-hero');
+  const heroImage = document.querySelector('[data-parallax-image]');
+  const heroCopy = document.querySelector('[data-parallax-copy]');
+  const heroScroll = document.querySelector('.home-hero__scroll');
+  if (hero && heroImage && heroCopy) {
+    let frameRequested = false;
+    const updateHero = () => {
+      const progress = Math.min(Math.max(window.scrollY / hero.offsetHeight, 0), 1);
+      heroImage.style.transform = `translate3d(0, ${progress * 4.5}%, 0) scale(${1.04 + progress * .025})`;
+      heroCopy.style.transform = `translate3d(0, ${progress * -48}px, 0)`;
+      heroCopy.style.opacity = String(1 - progress * .82);
+      if (heroScroll) heroScroll.style.opacity = String(Math.max(0, 1 - progress * 4));
+      frameRequested = false;
+    };
+    const requestHeroUpdate = () => {
+      if (frameRequested) return;
+      frameRequested = true;
+      window.requestAnimationFrame(updateHero);
+    };
+    window.addEventListener('scroll', requestHeroUpdate, { passive: true });
+    window.addEventListener('resize', requestHeroUpdate, { passive: true });
+    updateHero();
+  }
+} else {
+  revealSections.forEach((section) => section.classList.add('is-visible'));
+}
+
 const lightbox = document.querySelector('[data-lightbox]');
 if (lightbox) {
   const slides = [...lightbox.querySelectorAll('[data-slide]')];
