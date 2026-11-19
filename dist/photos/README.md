@@ -2,7 +2,7 @@
 
 Put your optimized images in this folder and either:
 
-1. keep the filenames `hero.svg`, `about.svg`, and `photo-01.svg` through `photo-06.svg`; or
+1. keep the filenames `hero.jpg`, `about.svg`, and `photo-01.svg` through `photo-06.svg`; or
 2. use your preferred `.jpg`, `.webp`, or `.avif` filenames and update the `src` values in `src/app/app.component.ts` plus the hero/about paths in `src/app/app.component.html`.
 
 Recommended export sizes:
