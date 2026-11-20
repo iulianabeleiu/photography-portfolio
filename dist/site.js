@@ -8,6 +8,18 @@ if (menuButton && navigation) {
   });
 }
 
+const homeHeader = document.querySelector('.home-header');
+const homeHero = document.querySelector('.home-hero');
+if (homeHeader && homeHero) {
+  const updateHomeHeader = () => {
+    homeHeader.classList.toggle('is-scrolled', window.scrollY > 24);
+    homeHeader.classList.toggle('is-past-hero', window.scrollY >= homeHero.offsetHeight - 110);
+  };
+  window.addEventListener('scroll', updateHomeHeader, { passive: true });
+  window.addEventListener('resize', updateHomeHeader, { passive: true });
+  updateHomeHeader();
+}
+
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const revealSections = [...document.querySelectorAll('[data-reveal]')];
 
@@ -28,6 +40,8 @@ if (!prefersReducedMotion) {
   const hero = document.querySelector('.home-hero');
   const heroImage = document.querySelector('[data-parallax-image]');
   const heroCopy = document.querySelector('[data-parallax-copy]');
+  const heroTitle = heroCopy?.querySelector('h1');
+  const heroIntro = heroCopy?.querySelector(':scope > div');
   const heroScroll = document.querySelector('.home-hero__scroll');
   if (hero && heroImage && heroCopy) {
     let frameRequested = false;
@@ -36,9 +50,17 @@ if (!prefersReducedMotion) {
       const progress = Math.min(Math.max((window.scrollY - hero.offsetTop) / travel, 0), 1);
       hero.style.setProperty('--hero-progress', progress.toFixed(3));
       hero.querySelector('.home-hero__sticky')?.style.setProperty('--hero-progress', progress.toFixed(3));
-      heroImage.style.transform = `translate3d(0, ${progress * 11}%, 0) scale(${1.07 + progress * .1})`;
-      heroCopy.style.transform = `translate3d(0, ${progress * -22}px, 0)`;
-      heroCopy.style.opacity = String(1 - progress * .58);
+      heroImage.style.transform = 'none';
+      heroCopy.style.transform = 'none';
+      heroCopy.style.opacity = '1';
+      if (heroTitle) {
+        heroTitle.style.transform = `translate3d(0, ${progress * -150}px, 0)`;
+        heroTitle.style.opacity = String(1 - progress * .35);
+      }
+      if (heroIntro) {
+        heroIntro.style.transform = `translate3d(0, ${progress * -92}px, 0)`;
+        heroIntro.style.opacity = String(1 - progress * .45);
+      }
       if (heroScroll) heroScroll.style.opacity = String(Math.max(0, 1 - progress * 3));
       frameRequested = false;
     };

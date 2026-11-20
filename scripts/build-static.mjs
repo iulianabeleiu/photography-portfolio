@@ -19,7 +19,7 @@ function footer() {
 }
 
 function document({ title, description, body, current = '', home = false }) {
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title}</title><meta name="description" content="${description}"><meta name="theme-color" content="#071a2a"><link rel="icon" href="${favicon}"><link rel="stylesheet" href="site.css"></head><body>${header(current, home)}${body}${footer()}<script src="site.js" defer></script></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title}</title><meta name="description" content="${description}"><meta name="theme-color" content="#071a2a"><link rel="icon" href="${favicon}"><link rel="stylesheet" href="site.css?v=13"></head><body>${header(current, home)}${body}${footer()}<script src="site.js?v=13" defer></script></body></html>`;
 }
 
 function gallery(photos, limit = photos.length) {
