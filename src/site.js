@@ -32,11 +32,14 @@ if (!prefersReducedMotion) {
   if (hero && heroImage && heroCopy) {
     let frameRequested = false;
     const updateHero = () => {
-      const progress = Math.min(Math.max(window.scrollY / hero.offsetHeight, 0), 1);
-      heroImage.style.transform = `translate3d(0, ${progress * 4.5}%, 0) scale(${1.04 + progress * .025})`;
-      heroCopy.style.transform = `translate3d(0, ${progress * -48}px, 0)`;
-      heroCopy.style.opacity = String(1 - progress * .82);
-      if (heroScroll) heroScroll.style.opacity = String(Math.max(0, 1 - progress * 4));
+      const travel = Math.max(hero.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max((window.scrollY - hero.offsetTop) / travel, 0), 1);
+      hero.style.setProperty('--hero-progress', progress.toFixed(3));
+      hero.querySelector('.home-hero__sticky')?.style.setProperty('--hero-progress', progress.toFixed(3));
+      heroImage.style.transform = `translate3d(0, ${progress * 11}%, 0) scale(${1.07 + progress * .1})`;
+      heroCopy.style.transform = `translate3d(0, ${progress * -22}px, 0)`;
+      heroCopy.style.opacity = String(1 - progress * .58);
+      if (heroScroll) heroScroll.style.opacity = String(Math.max(0, 1 - progress * 3));
       frameRequested = false;
     };
     const requestHeroUpdate = () => {
